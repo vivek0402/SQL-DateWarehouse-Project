@@ -68,8 +68,6 @@ Develop SQL-based analytics to deliver detailed insights into:
 
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.  
 
-For more details, refer to [docs/requirements.md](docs/requirements.md).
-
 ## 📂 Repository Structure
 ```
 data-warehouse-project/
@@ -77,24 +75,32 @@ data-warehouse-project/
 ├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
 │
 ├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
+│   ├── data_architecture.png           # Draw.io file shows the project's architecture
 │   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
+│   ├── data_flow.png                   # Draw.io file for the data flow diagram
+│   ├── data_model.png                  # Draw.io file for data models (star schema)
+|   ├── data_integration.png            # Draw.io file for data integration method
+|   ├── data_layers.pdf                 # Compiled Draw.io files for the information of each layer and methodology used. 
 │   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
 │
 ├── scripts/                            # SQL scripts for ETL and transformations
 │   ├── bronze/                         # Scripts for extracting and loading raw data
+│       ├── proc_load_bronze.sql        # Stored Procedure to load data from raw .csv files to bronze schema
+│       ├── ddl_bronze.sql              # Stored Procedure to create tables for bronze schema
 │   ├── silver/                         # Scripts for cleaning and transforming data
+│       ├── prod_load_silver.sql        # Stored Procedure to perform ETL from bronze to silver schema
+│       ├── ddl_silver.sql              # Stored Procedure to create tables for silver schema
 │   ├── gold/                           # Scripts for creating analytical models
+│       ├── ddl_gold.sql                # Create Star Schema to connect dimension tables to fact table while creating view tables to produce business-ready data
+│   ├── init_database.sql               # Contains SQL query to create a new database while setting up
 │
 ├── tests/                              # Test scripts and quality files
-│
+│   ├── quality_checks_silver.sql              # Contains quality check conditions for silver layer
+│   ├── quality_checks_gold.sql              # Contains quality check conditions for gold layer 
+| 
 ├── README.md                           # Project overview and instructions
 ├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+
 ```
 ---
 ---
